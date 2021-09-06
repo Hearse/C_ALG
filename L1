@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+
+#define ERROR_OPEN_FILE -3
+
+int main(  )
+{
+	long long  A , B;
+	FILE *f_op = fopen("input.txt","r");
+		if(f_op == NULL ) {
+			printf("Error opening file" );
+			getch();
+			exit(ERROR_OPEN_FILE);
+		}
+	FILE *f_cl = fopen("output.txt","w");
+	
+	fscanf(f_op,"%lld %lld", &A, &B);
+	printf("%lld %lld \n",A ,B);
+	fprintf(f_cl, "%lld\n", A + B);
+	fclose(f_op); 
+	fclose(f_cl); 
+	return 0;
+}
